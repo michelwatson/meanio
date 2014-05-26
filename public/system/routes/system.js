@@ -12,6 +12,10 @@ angular.module('mean.system').config(['$stateProvider', '$urlRouterProvider',
                     url: '/',
                     templateUrl: 'public/system/views/index.html'
                 })
+                .state('events', {
+                    url: '/',
+                    templateUrl: 'public/system/views/events.html'
+                })
                 .state('auth', {
                     templateUrl: 'public/auth/views/index.html'
                 });

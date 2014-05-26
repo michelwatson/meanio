@@ -1,0 +1,66 @@
+<head>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><!-- load jquery -->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script><!-- load angular -->
+    <script data-require="angular.js@*" data-semver="1.2.0-rc3-nonmin" src="http://code.angularjs.org/1.2.0-rc.3/angular.js"></script>
+    <script data-require="ng-table@*" data-semver="0.3.1" src="http://bazalt-cms.com/assets/ng-table/0.3.1/ng-table.js"></script>
+
+    <link data-require="ng-table@*" data-semver="0.3.1" rel="stylesheet" href="http://bazalt-cms.com/assets/ng-table/0.3.1/ng-table.css" />
+    <link data-require="bootstrap-css@*" data-semver="3.0.0" rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+
+</head>
+<section data-ng-controller="EventController">
+    <h1 mean-token="'events-default'">Welcome, search events!</h1>
+    <h2 >{{val}}</h2>
+    <h3>{{events.length}}</h3>
+<!--
+    <div id="event-list" class="row">
+        <div class="col-sm-4 col-sm-offset-4">
+
+
+            <div class="checkbox" ng-repeat="event in events">
+                <label>
+                    <input type="checkbox" ng-model="event"> {{ event.eventName }}
+                </label>
+            </div>
+
+        </div>
+    </div> -->
+    <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading">Listed Events</div>
+        <!--  <div class="panel-body">
+              <p>...t</p>
+        </div>-->
+        <button ng-click="tableParams.sorting({})" class="btn btn-default pull-right">Clear sorting</button>
+        <p><strong>Sorting:</strong> {{tableParams.sorting()|json}}
+        <table ng-table="tableParams" class="table">
+            <tr ng-model="eventer" ng-repeat="eventer in events">
+                <td data-title="'Event'" sortable="'event'">{{eventer.eventName}}</td>
+                <td data-title="'Date'" sortable="'date'">{{eventer.eventDate}}</td>
+                <td data-title="'State'" sortable="'state'">{{eventer.eventState}}</td>
+                <td data-title="'Event Status'" sortable="'status'">{{eventer.eventStatus}}</td>
+                <td data-title="'Cost'" sortable="'cost'">{{eventer.eventCost}}</td>
+                <td><form><button id="{{evnterer._ID}}" type="submit" class="btn btn-primary btn-sm">Attend!</button></form></td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <button type="submit" class="btn btn-primary btn-lg" ng-click="getEvents()">Get</button>
+    </div>
+</section>
+<body ng-controller="DemoCtrl">
+
+
+<button ng-click="tableParams.sorting({})" class="btn btn-default pull-right">Clear sorting</button>
+<p><strong>Sorting:</strong> {{tableParams.sorting()|json}}
+
+<table ng-table="tableParams" class="table">
+    <tr ng-repeat="user in $data">
+        <td data-title="'Name'" sortable="'name'">
+            {{user.name}}
+        </td>
+        <td data-title="'Age'" sortable="'age'">
+            {{user.age}}
+        </td>
+    </tr>
+</table>
