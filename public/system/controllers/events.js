@@ -45,7 +45,7 @@ angular.module('mean.system').controller('EventController', ['$scope', 'Global',
         };*/
     }]);
 
-angular.module('main.system').
+/*angular.module('main.system').
     controller('DemoCtrl', function($scope, $filter, ngTableParams) {
         var data = [{name: "Moroni", age: 50},
             {name: "Tiancum", age: 43},
@@ -82,4 +82,4 @@ angular.module('main.system').
                 $defer.resolve(orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count()));
             }
         });
-    });
+    });*/
