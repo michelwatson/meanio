@@ -12,6 +12,8 @@
             "public/system/lib/angular-resource/angular-resource.js",
             "public/system/lib/angular-ui-router/release/angular-ui-router.js",
             "public/system/lib/jquery/dist/jquery.min.js",
+            "public/system/lib/ng-table/ng-table.min.js",
+            "public/system/lib/ng-grid/build/ng-grid.js",
             "public/system/lib/angular-bootstrap/ui-bootstrap.js",
             "public/system/lib/angular-bootstrap/ui-bootstrap-tpls.js",
             "public/init.js",

@@ -1,15 +1,17 @@
 {
     "name": "events",
     "version": "0.0.1",
-    "description": "Some description of events",
+    "description": "Events System",
     "author": {
-        "name": "mean scaffold"
+        "name": "Michel Watson"
     },
     "mean": "0.3.3",
     "engines": {
         "node": "0.10.x",
         "npm": "1.4.x"
     },
-    "dependencies": {},
+    "dependencies": {
+        "ng-table": "latest"
+    },
     "license": "MIT"
 }

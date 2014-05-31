@@ -50,7 +50,8 @@ Events.register(function(app, auth, database) {
         //you now have the settings object
     });
     */
-
+    //-- Events dependencies
+    Events.angularDependencies(['ngTable', 'ngGrid']);
     return Events;
 });
 

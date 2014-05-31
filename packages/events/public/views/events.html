@@ -1,3 +1,79 @@
+<head>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><!-- load jquery -->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script><!-- load angular -->
+    <script data-require="angular.js@*" data-semver="1.2.0-rc3-nonmin" src="http://code.angularjs.org/1.2.0-rc.3/angular.js"></script>
+    <script data-require="ng-table@*" data-semver="0.3.1" src="http://bazalt-cms.com/assets/ng-table/0.3.1/ng-table.js"></script>
+
+    <link data-require="ng-table@*" data-semver="0.3.1" rel="stylesheet" href="http://bazalt-cms.com/assets/ng-table/0.3.1/ng-table.css" />
+    <link data-require="bootstrap-css@*" data-semver="3.0.0" rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="http://angular-ui.github.com/ng-grid/css/ng-grid.css" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.2/angular.min.js"></script>
+    <script type="text/javascript" src="http://angular-ui.github.com/ng-grid/lib/ng-grid.debug.js"></script>
+</head>
+<section data-ng-controller="EventsController">
+    <h1>Welcome, search events!</h1>
+    <h2 >{{myData.length}}</h2>
+    <h3>{{events.length}}</h3>
+    <!--
+        <div id="event-list" class="row">
+            <div class="col-sm-4 col-sm-offset-4">
+
+
+                <div class="checkbox" ng-repeat="event in events">
+                    <label>
+                        <input type="checkbox" ng-model="event"> {{ event.eventName }}
+                    </label>
+                </div>
+
+            </div>
+        </div> -->
+    <div class="row">
+    <div class="form-group col-sm-1">
+        <label>State</label>
+    <select class="form-control">
+        <option value="AZ">AZ</option>
+        <option value="CA">CA</option>
+        <option value="NV">NV</option>
+        <option value="TX">TX</option>
+    </select>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading">Listed Events</div>
+        <!--  <div class="panel-body">
+              <p>...t</p>
+        </div>-->
+        <button ng-click="tableParams.sorting({})" class="btn btn-default pull-right">Clear sorting</button>
+        <p><strong>Sorting:</strong> {{tableParams.sorting()|json}}
+        <table ng-table="tableParams" class="table">
+            <tr ng-model="eventer" ng-repeat="eventer in events">
+                <td data-title="'Event'" sortable="'event'">{{eventer.eventName}}</td>
+                <td data-title="'Date'" sortable="'date'">{{eventer.eventDate}}</td>
+                <td data-title="'State'" sortable="'state'">{{eventer.eventState}}</td>
+                <td data-title="'Event Status'" sortable="'status'">{{eventer.eventStatus}}</td>
+                <td data-title="'Cost'" sortable="'cost'">{{eventer.eventCost}}</td>
+                <td><form><button id="{{evnterer._ID}}" type="submit" class="btn btn-primary btn-sm">Attend!</button></form></td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <button type="submit" class="btn btn-primary btn-lg" ng-click="getEvents()">Get</button>
+    </div>
+
+<body>
+<div class="panel panel-default">
+    <!-- Default panel contents -->
+    <div class="panel-heading">Listed Events</div>
+    <input type="text" ng-model="filterOptions.filterText" placeholder="Filter">
+    <div class="gridStyle" ng-grid="gridOptions"></div>
+    </div>
+</body>
+</section>
+<!--
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,17 +83,17 @@
     <link data-require="ng-table@*" data-semver="0.3.1" rel="stylesheet" href="http://bazalt-cms.com/assets/ng-table/0.3.1/ng-table.css" />
     <link data-require="bootstrap-css@*" data-semver="3.0.0" rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
     <link rel="stylesheet" href="events/assets/css/events.css" />
-    <script src="events/public/controllers/event.js"></script>
+
 </head>
 
-<body ng-app="main" ng-controller="DemoCtrl">
+<body ng-controller="EventsController">
 <h1>{{val}} hello</h1>
 
 <button ng-click="tableParams.sorting({})" class="btn btn-default pull-right">Clear sorting</button>
 <p><strong>Sorting:</strong> {{tableParams.sorting()|json}}
 
 <table ng-table="tableParams" class="table">
-    <tr ng-repeat="user in $data">
+    <tr ng-repeat="user in datas">
         <td data-title="'Name'" sortable="'name'">
             {{user.name}}
         </td>
@@ -28,3 +104,5 @@
 </table>
 </body>
 </html>
+
+-->
