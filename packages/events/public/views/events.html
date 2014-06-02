@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <head>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><!-- load jquery -->
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script><!-- load angular -->
@@ -29,17 +30,40 @@
 
             </div>
         </div> -->
-    <div class="row">
-    <div class="form-group col-sm-1">
-        <label>State</label>
-    <select class="form-control">
-        <option value="AZ">AZ</option>
-        <option value="CA">CA</option>
-        <option value="NV">NV</option>
-        <option value="TX">TX</option>
-    </select>
-        </div>
+    <body>
+    <div class="container">
+        <form class="form-horizontal" role="form">
+
+            <div class="form-group">
+                <label for="date" class="col-xs-1 col-sm-1 control-label">State</label>
+                <div class="col-xs-2">
+                    <select class="form-control" selected="CA">
+                        <option value="AZ">AZ</option>
+                        <option value="CA" selected="selected">CA</option>
+                        <option value="NV">NV</option>
+                        <option value="TX">TX</option>
+                    </select>
+                </div>
+                <label for="date" class="col-xs-1 col-sm-1 control-label">Date</label>
+                <div class="col-xs-1">
+                    <input type='text' class="form-control" id='dateStart' placeholder="Start"/>
+                </div>
+                <div class="col-xs-1">
+                    <input type='text' class="form-control" id='dateEnd' placeholder="End"/>
+                </div>
+                <label for="date" class="col-xs-1 col-sm-1 control-label">Status</label>
+                <div class="col-xs-3">
+                    <select class="form-control">
+                        <option value="pending">Pending</option>
+                        <option value="cancelled">Cancelled</option>
+                        <option value="planned" selected="selected">Planned</option>
+                    </select>
+                </div>
+            </div>
+        </form>
     </div>
+    </body>
+
     <div class="panel panel-default">
         <!-- Default panel contents -->
         <div class="panel-heading">Listed Events</div>
@@ -102,7 +126,5 @@
         </td>
     </tr>
 </table>
-</body>
+</body>-->
 </html>
-
--->
