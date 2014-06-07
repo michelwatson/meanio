@@ -7,19 +7,23 @@ angular.module('mean.events').controller('EventsController', ['$scope', 'Global'
             name: 'events'
         };
         $scope.val = 'hello world';
-
+        $scope.eState = '';
+        $scope.eStatus = '';
         $http.get('/events/example')
             .success(function(data) {
                 $scope.events = data;
                 $scope.myData = data;
-                console.log('Tried to get events');
+                $scope.myData2 = data;
             })
             .error(function(data) {
                 console.log('Error: ' + data);
             });
 
+        $scope.filterOptions = {
+            useExternalFilter: true
+        };
 
-        $scope.gridOptions = { data: 'myData',
+        $scope.gridOptions = { data: 'myData2',
             enableRowSelection: false,
             filterOptions: $scope.filterOptions,
             columnDefs: [
@@ -32,6 +36,75 @@ angular.module('mean.events').controller('EventsController', ['$scope', 'Global'
             ]
         };
 
+      /*  $scope.$watch('eventFilter', function(eventStatus) {
+            $scope.myData2 = [];
+            $scope.myData.forEach(function(r) {
+                if (r.eventStatus === eventStatus) {//parseInt(r.eventCost, 10) >= val) {
+                    $scope.myData2.push(r);
+                }
+                else {
+                    $scope.myData2 = $scope.myData;
+                }
+            });
+        });*/
+        $scope.$watch('eventFilter', function(s) {
+            if (true) {
+                if (true) {
+                    $scope.myData2 = [];
+                    $scope.myData.forEach(function(r) {
+                        $scope.eStatus = s;
+                        if ((r.eventStatus === s && r.eventState === $scope.eState) || (r.eventStatus === s && $scope.eState === '')) {//parseInt(r.eventCost, 10) >= val) {
+                            $scope.myData2.push(r);
+                        }
+                    });
+                }
+                else {
+                    $scope.myData2 = $scope.myData;
+                }
+            }
+            else {
+                $scope.myData2 = $scope.myData;
+            }
+        });
+        $scope.$watch('eventState', function(s) {
+            if (true) {
+                if (true) {
+                    $scope.myData2 = [];
+                    $scope.myData.forEach(function(r) {
+                        $scope.eState = s;
+                        if ((r.eventState === s && r.eventStatus === $scope.eStatus) || (r.eventState === s &&  $scope.eStatus === '')) {//parseInt(r.eventCost, 10) >= val) {
+                            $scope.myData2.push(r);
+                        }
+                    });
+                }
+                else {
+                    $scope.myData2 = $scope.myData;
+                }
+            }
+            else {
+                $scope.myData2 = $scope.myData;
+            }
+        });
+        $scope.$watch('lowerLimit', function(n, o) {
+            console.log('Tried to get lowerlimit');
+            if (n) {
+                var val = parseInt(n, 10);
+                if (val) {
+                    $scope.myData2 = [];
+                    $scope.myData.forEach(function(r) {
+                        if (parseInt(r.eventCost, 10) >= val) {
+                            $scope.myData2.push(r);
+                        }
+                    });
+                }
+                else {
+                    $scope.myData2 = $scope.myData;
+                }
+            }
+            else {
+                $scope.myData2 = $scope.myData;
+            }
+        });
 /*
         $scope.tableParams = new ngTableParams({
             page: 1,            // show first page

@@ -25,7 +25,7 @@
             <div class="form-group">
                 <label for="date" class="col-xs-1 col-sm-1 control-label">State</label>
                 <div class="col-xs-2">
-                    <select class="form-control" selected="CA">
+                    <select class="form-control" selected="CA" ng-model="eventState">
                         <option value="AZ">AZ</option>
                         <option value="CA" selected="selected">CA</option>
                         <option value="NV">NV</option>
@@ -41,10 +41,10 @@
                 </div>
                 <label for="date" class="col-xs-1 col-sm-1 control-label">Status</label>
                 <div class="col-xs-3">
-                    <select class="form-control">
-                        <option value="pending">Pending</option>
-                        <option value="cancelled">Cancelled</option>
-                        <option value="planned" selected="selected">Planned</option>
+                    <select class="form-control" ng-model="eventFilter">
+                        <option value="Pending">Pending</option>
+                        <option value="Cancelled">Cancelled</option>
+                        <option value="Planned" selected="selected">Planned</option>
                     </select>
                 </div>
             </div>
@@ -67,7 +67,7 @@
                 <td data-title="'State'" sortable="'state'">{{eventer.eventState}}</td>
                 <td data-title="'Event Status'" sortable="'status'">{{eventer.eventStatus}}</td>
                 <td data-title="'Cost'" sortable="'cost'">{{eventer.eventCost}}</td>
-                <td><form><button id="{{evnterer._ID}}" type="submit" class="btn btn-primary btn-sm">Attend!</button></form></td>
+                <td><form><button ng-submit="filterEvents()" type="submit" class="btn btn-primary btn-sm">Attend!</button></form></td>
             </tr>
         </table>
     </div>
@@ -76,6 +76,7 @@
     </div>
 
 <body>
+<strong>Lower Limit:</strong> </string><input type="text" ng-model="lowerLimit" ng-init="lowerLimit = 500" />
 <div class="panel panel-default">
     <!-- Default panel contents -->
     <div class="panel-heading">Listed Events</div>
